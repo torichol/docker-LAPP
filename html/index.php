@@ -4,7 +4,7 @@ echo("docker-compose による LAPP 環境作成<br />\n");
 //▼DB初期値
 $dbHOST="pgsql";																//▼主DBホスト名
 $dbPORT="5432";																//▼主DBポート番号
-$dbNAME="zip7";																//▼主DB名
+$dbNAME="pguser";																//▼主DB名
 $dbUSER="pguser";																//▼主DBアクセスユーザ名
 $dbPWD="pguser";																//▼主DBＰＷＤ
 

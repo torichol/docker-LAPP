@@ -1,4 +1,4 @@
-# docker-compose による LAPP 環境作成 ＠2018/11/21
+# docker-compose による LAPP 環境作成 ＠2018/11/24
 
 # docker-compose の使用バージョン
 version: "3"
@@ -11,10 +11,9 @@ services:
   pgsql:
 
     # コンテナを作成するためのイメージ
-    image: postgres:11.1
-    #build: ./pgsql
-    # Dockerfile でビルドする予定だったが、initdb が上手く行かないため
-    # とりあえず公式イメージで動作を目指すことにした
+    #image: postgres:11.1
+    # イメージを作成するための DockerFile のある場所
+    build: ./pgsql
 
     # 公開ポート
     ports:
@@ -22,9 +21,11 @@ services:
 
     # このコンテナのための環境変数の設定
     environment:
-      POSTGRES_USER: pguser
-      POSTGRES_PASSWORD: pguser
-      POSTGRES_DB: pguser
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "password"
+      #POSTGRES_DB: pguser
+      #POSTGRES_INITDB_ARGS: "--encoding=UTF-8 --locale=C"
+      POSTGRES_INITDB_ARGS: "--encoding=UTF-8 --locale=ja_JP.UTF-8"
 
     # マウントボリューム～コンテナデータと手元データの連携定義
     volumes:
